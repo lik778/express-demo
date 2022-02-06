@@ -1,0 +1,41 @@
+@url=http://localhost:3002/api
+@json=Content-Type: application/json
+@Authorizations=Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjYxZmY4M2NkYTcyNTVlZTU0NTBjZjJiMCIsImlhdCI6MTY0NDEzNzY1MX0.cpeuwYFfPLjmRdhF2qm9P0BPMklwW2yUwvJKIhuYyB8
+### 注册
+post {{url}}/register
+{{json}}
+
+{
+  "username": "user1",
+  "password": "123456"
+}
+
+### 登录，分发token
+post {{url}}/login
+{{json}}
+
+{
+  "username": "user1",
+  "password": "123456"
+}
+
+### 获取数据，将token作为请求头的一部分
+get {{url}}/getAll
+{{Authorizations}}
+
+### 更新数据
+put {{url}}/update
+{{json}}
+
+{
+  "username": "user1",
+  "password": "8888"
+}
+
+### 删除数据
+delete {{url}}/delete
+{{json}}
+
+{
+  "username": "user1"
+}
